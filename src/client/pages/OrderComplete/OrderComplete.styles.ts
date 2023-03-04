@@ -4,6 +4,8 @@ export const container = () => css`
   display: grid;
   gap: 8px;
   padding: 24px 16px;
+  max-width: 1024px;
+  margin: 0 auto;
 `;
 
 export const notice = () => css`

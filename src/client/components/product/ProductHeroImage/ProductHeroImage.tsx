@@ -12,9 +12,10 @@ import * as styles from './ProductHeroImage.styles';
 type Props = {
   product: ProductFragmentResponse;
   title: string;
+  lazy?: boolean;
 };
 
-export const ProductHeroImage: FC<Props> = memo(({ product, title }) => {
+export const ProductHeroImage: FC<Props> = memo(({ lazy, product, title }) => {
   const thumbnailFile = product.media.find((productMedia) => productMedia.isThumbnail)?.file;
 
   return (
@@ -24,7 +25,12 @@ export const ProductHeroImage: FC<Props> = memo(({ product, title }) => {
           <Anchor href={`/product/${product.id}`}>
             <div className={styles.container()}>
               <AspectRatio ratioHeight={9} ratioWidth={16}>
-                <img className={styles.image()} src={thumbnailFile?.filename} />
+                <img
+                  alt={product.name}
+                  className={styles.image()}
+                  loading={lazy ? 'lazy' : 'eager'}
+                  src={thumbnailFile?.filename}
+                />
               </AspectRatio>
 
               <div className={styles.overlay()}>

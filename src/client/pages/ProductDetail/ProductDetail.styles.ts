@@ -3,6 +3,8 @@ import { css } from '@emotion/css';
 export const container = () => css`
   display: grid;
   gap: 40px;
+  max-width: 1024px;
+  margin: 0 auto;
 `;
 
 export const details = () => css`

@@ -2,6 +2,8 @@ import { css } from '@emotion/css';
 
 export const container = () => css`
   padding: 24px 16px;
+  max-width: 1024px;
+  margin: 0 auto;
 `;
 
 export const cart = () => css`
@@ -29,6 +31,8 @@ export const addressFormHeading = () => css`
 
 export const emptyContainer = () => css`
   padding: 24px 16px;
+  max-width: 1024px;
+  margin: 0 auto;
 `;
 
 export const emptyDescription = () => css`
