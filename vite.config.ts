@@ -1,6 +1,6 @@
 import path from 'node:path';
 
-import react from '@vitejs/plugin-react';
+import preact from '@preact/preset-vite';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { defineConfig } from 'vite';
 import { ViteEjsPlugin } from 'vite-plugin-ejs';
@@ -32,6 +32,7 @@ export default defineConfig(async ({ mode }) => {
         output: {
           experimentalMinChunkSize: 40960,
         },
+        // plugins: [visualizer()],
         plugins: [
           mode === 'analyze' &&
             visualizer({
@@ -45,7 +46,7 @@ export default defineConfig(async ({ mode }) => {
       target: 'chrome110',
     },
     plugins: [
-      react(),
+      preact(),
       wasm(),
       topLevelAwait(),
       ViteEjsPlugin({
@@ -54,5 +55,11 @@ export default defineConfig(async ({ mode }) => {
         videos,
       }),
     ],
+    resolve: {
+      alias: {
+        react: 'preact-compat',
+        'react-dom': 'preact-compat',
+      },
+    },
   };
 });
