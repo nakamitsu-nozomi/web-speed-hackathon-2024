@@ -52,6 +52,7 @@
     "react-router-dom": "6.4.5",
     "recoil": "0.7.6",
     "reflect-metadata": "0.1.13",
+    "rollup-plugin-visualizer": "5.9.0",
     "setimmediate": "1.0.5",
     "sqlite3": "5.1.4",
     "styled-components": "5.3.6",
