@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet';
 import { Layout } from '../../components/application/Layout';
 import { ProductList } from '../../components/feature/ProductList';
 import { ProductHeroImage } from '../../components/product/ProductHeroImage';
+import { ProductHeroImagePlaceholder } from '../../components/product/ProductHeroImage/ProductHeroImagePlaceholder';
 import { useFeatures } from '../../hooks/useFeatures';
 import { useRecommendation } from '../../hooks/useRecommendation';
 
@@ -16,7 +17,6 @@ export const Top: FC = () => {
   if (recommendation === undefined || features === undefined) {
     return null;
   }
-
   return (
     <>
       <Helmet>
@@ -24,7 +24,11 @@ export const Top: FC = () => {
       </Helmet>
       <Layout>
         <div>
-          <ProductHeroImage product={recommendation.product} title="今週のオススメ" />
+          {recommendation ? (
+            <ProductHeroImage product={recommendation.product} title="今週のオススメ" />
+          ) : (
+            <ProductHeroImagePlaceholder />
+          )}
 
           <div className={styles.featureList()}>
             {features.map((featureSection) => {

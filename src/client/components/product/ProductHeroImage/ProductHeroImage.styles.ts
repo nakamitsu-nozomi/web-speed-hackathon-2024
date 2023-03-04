@@ -6,6 +6,8 @@ export const container = () => css`
   transition-duration: 300ms;
   transition-property: opacity;
   transition-timing-function: linear;
+  max-width: 1024px;
+  margin: 0 auto;
 
   &:hover {
     opacity: 0.8;
@@ -16,6 +18,14 @@ export const image = () => css`
   height: 100%;
   object-fit: cover;
   width: 100%;
+`;
+
+export const placeholder = () => css`
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+  //background-color: #fff;
+  background-color: pink;
 `;
 
 export const overlay = () => css`
