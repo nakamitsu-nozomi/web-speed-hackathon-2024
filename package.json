@@ -27,9 +27,7 @@
     "bcrypt": "5.1.0",
     "canvaskit-wasm": "0.38.0",
     "classnames": "2.3.2",
-    "core-js": "3.29.0",
     "currency-formatter": "1.5.9",
-    "date-time-format-timezone": "1.0.22",
     "formik": "2.2.9",
     "graphql": "16.6.0",
     "http-graceful-shutdown": "3.1.13",
@@ -107,5 +105,8 @@
   "engines": {
     "node": ">=18.0.0",
     "pnpm": ">=7.24.3"
-  }
+  },
+  "browserslist": [
+    "last 1 chrome version"
+  ]
 }
