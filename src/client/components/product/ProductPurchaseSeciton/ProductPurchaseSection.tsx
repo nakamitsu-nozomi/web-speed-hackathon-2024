@@ -11,7 +11,7 @@ import { PrimaryButton } from '../../foundation/PrimaryButton';
 import * as styles from './ProductPurchaseSection.styles';
 
 type Props = {
-  product: ProductFragmentResponse | undefined;
+  product: ProductFragmentResponse;
   amountInCart: number;
   isAuthUser: boolean;
   onUpdateCartItem: (productId: number, count: number) => void;
@@ -20,10 +20,6 @@ type Props = {
 
 export const ProductPurchaseSection: FC<Props> = memo(
   ({ amountInCart, isAuthUser, onOpenSignInModal, onUpdateCartItem, product }) => {
-    if (product === undefined) {
-      return null;
-    }
-
     if (!isAuthUser) {
       return (
         <div className={styles.container()}>

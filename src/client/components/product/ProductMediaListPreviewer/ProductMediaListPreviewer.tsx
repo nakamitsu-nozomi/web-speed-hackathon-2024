@@ -10,15 +10,11 @@ import { MediaItemPreviewer } from './MediaItemPreviewer';
 import * as styles from './ProductMediaListPreviewer.styles';
 
 type Props = {
-  product: ProductFragmentResponse | undefined;
+  product: ProductFragmentResponse;
 };
 
 export const ProductMediaListPreviewer: FC<Props> = ({ product }) => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
-
-  if (product === undefined || product.media.length === 0) {
-    return null;
-  }
 
   return (
     <div className={styles.container()}>

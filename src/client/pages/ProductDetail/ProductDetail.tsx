@@ -18,6 +18,7 @@ import { useOpenModal } from '../../store/modal';
 import { normalizeCartItemCount } from '../../utils/normalize_cart_item';
 
 import * as styles from './ProductDetail.styles';
+import { ProductDetailPlaceholder } from './ProductDetailPlaceholder';
 
 export const ProductDetail: FC = () => {
   const { productId } = useParams();
@@ -55,21 +56,25 @@ export const ProductDetail: FC = () => {
       )}
       <Layout>
         <div className={styles.container()}>
-          <section className={styles.details()}>
-            <ProductMediaListPreviewer product={product} />
-            <div className={styles.overview()}>
-              <ProductOverview activeOffer={activeOffer} product={product} />
-            </div>
-            <div className={styles.purchase()}>
-              <ProductPurchaseSection
-                amountInCart={amountInCart}
-                isAuthUser={isAuthUser}
-                onOpenSignInModal={() => handleOpenModal('SIGN_IN')}
-                onUpdateCartItem={handleUpdateItem}
-                product={product}
-              />
-            </div>
-          </section>
+          {product ? (
+            <section className={styles.details()}>
+              <ProductMediaListPreviewer product={product} />
+              <div className={styles.overview()}>
+                <ProductOverview activeOffer={activeOffer} product={product} />
+              </div>
+              <div className={styles.purchase()}>
+                <ProductPurchaseSection
+                  amountInCart={amountInCart}
+                  isAuthUser={isAuthUser}
+                  onOpenSignInModal={() => handleOpenModal('SIGN_IN')}
+                  onUpdateCartItem={handleUpdateItem}
+                  product={product}
+                />
+              </div>
+            </section>
+          ) : (
+            <ProductDetailPlaceholder />
+          )}
 
           <section className={styles.reviews()}>
             <h2 className={styles.reviewsHeading()}>レビュー</h2>

@@ -9,29 +9,17 @@ import { ProductOfferLabel } from '../ProductOfferLabel';
 import * as styles from './ProductOverview.styles';
 
 type Props = {
-  product: ProductFragmentResponse | undefined;
+  product: ProductFragmentResponse;
   activeOffer: LimitedTimeOfferFragmentResponse | undefined;
 };
 
 export const ProductOverview: FC<Props> = memo(({ activeOffer, product }) => {
-  if (product === undefined) {
-    return null;
-  }
-
   const renderActiveOffer = () => {
     if (activeOffer === undefined) {
       return;
     }
 
     const endTime = dayjs(activeOffer.endDate).format('YYYY/MM/D HH:mm:ss');
-    // window.Temporal.Instant.from(activeOffer.endDate).toLocaleString('ja-jp', {
-    //   day: '2-digit',
-    //   hour: '2-digit',
-    //   minute: '2-digit',
-    //   month: '2-digit',
-    //   second: '2-digit',
-    //   year: 'numeric',
-    // });
 
     return (
       <div className={styles.offerLabel()}>
