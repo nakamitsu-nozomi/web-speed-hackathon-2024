@@ -1,21 +1,15 @@
 import classNames from 'classnames';
-import type { FC } from 'react';
-import * as Icons from 'react-icons/fa';
+import type { FC, ReactNode } from 'react';
 
 import * as styles from './Icon.styles';
 
 type Props = {
-  type: keyof typeof Icons;
   width: number;
   height: number;
   color: string;
+  children: ReactNode;
 };
 
-export const Icon: FC<Props> = ({ color, height, type, width }) => {
-  const Icon = Icons[type];
-  return (
-    <span className={classNames(type, styles.container({ color, height, width }))}>
-      <Icon />
-    </span>
-  );
+export const Icon: FC<Props> = ({ children, color, height, width }) => {
+  return <span className={classNames(styles.container({ color, height, width }))}>{children}</span>;
 };
