@@ -27,7 +27,7 @@ export const OrderPreview: FC<Props> = memo(({ onRemoveCartItem, onUpdateCartIte
           );
         })}
       </ul>
-      <p>{`¥${totalPrice.toLocaleString()}`}</p>
+      <p className={styles.totalPrice()}>{`¥${totalPrice.toLocaleString()}`}</p>
     </div>
   );
 });
