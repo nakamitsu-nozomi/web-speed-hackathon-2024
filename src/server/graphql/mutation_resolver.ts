@@ -1,5 +1,7 @@
-import { Temporal } from '@js-temporal/polyfill';
 import * as bcrypt from 'bcrypt';
+import dayjs from 'dayjs';
+import timezone from 'dayjs/plugin/timezone';
+import utc from 'dayjs/plugin/utc';
 import type { GraphQLFieldResolver } from 'graphql';
 
 import { Order } from '../../model/order';
@@ -9,6 +11,8 @@ import { ShoppingCartItem } from '../../model/shopping_cart_item';
 import { User } from '../../model/user';
 import type { Context } from '../context';
 import { dataSource } from '../data_source';
+dayjs.extend(utc);
+dayjs.extend(timezone);
 
 type MutationResolver = {
   signin: GraphQLFieldResolver<unknown, Context, { email: string; password: string }, Promise<boolean>>;
@@ -55,8 +59,7 @@ export const mutationResolver: MutationResolver = {
     if (session['userId'] == null) {
       throw new Error('Authentication required.');
     }
-
-    const postedAt = Temporal.Now.instant().toString({ timeZone: Temporal.TimeZone.from('UTC') });
+    const postedAt = dayjs().tz('utc').toString();
 
     await dataSource.manager.save(
       dataSource.manager.create(Review, {

@@ -1,4 +1,5 @@
 import { useSuspenseQuery_experimental as useSuspenseQuery } from '@apollo/client';
+import dayjs from 'dayjs';
 
 import type { GetRecommendationsQueryResponse } from '../graphql/queries';
 import { GetRecommendationsQuery } from '../graphql/queries';
@@ -6,7 +7,7 @@ import { GetRecommendationsQuery } from '../graphql/queries';
 export const useRecommendation = () => {
   const recommendationsResult = useSuspenseQuery<GetRecommendationsQueryResponse>(GetRecommendationsQuery);
 
-  const hour = window.Temporal.Now.plainTimeISO().hour;
+  const hour = dayjs().hour();
   const recommendations = recommendationsResult?.data?.recommendations;
 
   if (recommendations == null) {
