@@ -59,8 +59,7 @@
     "styled-components": "5.3.6",
     "throttle-debounce": "5.0.0",
     "timezone": "link:dayjs/plugin/timezone",
-    "typeorm": "0.3.11",
-    "zod": "3.20.6"
+    "typeorm": "0.3.11"
   },
   "devDependencies": {
     "@babel/core": "7.20.5",
