@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import type { FC } from 'react';
 import { memo } from 'react';
 import { FaCheckCircle } from 'react-icons/all';
@@ -69,7 +68,6 @@ export const ProductPurchaseSection: FC<Props> = memo(
       </div>
     );
   },
-  _.isEqual,
 );
 
 ProductPurchaseSection.displayName = 'ProductPurchaseSection';
