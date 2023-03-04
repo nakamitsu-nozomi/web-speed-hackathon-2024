@@ -1,4 +1,3 @@
-import * as currencyFormatter from 'currency-formatter';
 import type { FC } from 'react';
 
 import type { ProductFragmentResponse } from '../../../graphql/fragments';
@@ -32,7 +31,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
         ) : null}
         <div className={styles.description()}>
           <p className={styles.itemName()}>{product.name}</p>
-          <span className={styles.itemPrice()}>{currencyFormatter.format(price, { code: 'JPY', precision: 0 })}</span>
+          <span className={styles.itemPrice()}>{`¥${price.toLocaleString()}`}</span>
         </div>
         {activeOffer !== undefined && (
           <div className={styles.label()}>
