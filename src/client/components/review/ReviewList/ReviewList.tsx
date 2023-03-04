@@ -2,7 +2,6 @@ import dayjs from 'dayjs';
 import type { FC } from 'react';
 
 import type { ReviewFragmentResponse } from '../../../graphql/fragments';
-import { AspectRatio } from '../../foundation/AspectRatio';
 import { Image } from '../../foundation/Image';
 
 import * as styles from './ReviewList.styles';
@@ -24,9 +23,7 @@ export const ReviewList: FC<Props> = ({ reviews }) => {
         return (
           <li key={review.id} className={styles.item()} data-testid="review-list-item">
             <div className={styles.avaterImage()}>
-              <AspectRatio ratioHeight={1} ratioWidth={1}>
-                <Image height={52} src={review.user.profile.avatar.filename} width={52} />
-              </AspectRatio>
+              <Image height={52} loading="lazy" src={review.user.profile.avatar.filename} width={52} />
             </div>
             <div className={styles.content()}>
               <time className={styles.time()}>{endTime}</time>
