@@ -7,6 +7,7 @@ specifiers:
   '@babel/core': 7.20.5
   '@emotion/css': 11.10.5
   '@koa/router': 12.0.0
+  '@loadable/component': 5.15.3
   '@preact/preset-vite': 2.5.0
   '@types/bcrypt': 5.0.0
   '@types/koa': 2.13.5
@@ -16,6 +17,7 @@ specifiers:
   '@types/koa-send': 4.1.3
   '@types/koa-session': 5.10.6
   '@types/koa-static': 4.0.2
+  '@types/loadable__component': 5.13.4
   '@types/node': 18.11.15
   '@types/react': 18.0.28
   '@types/react-dom': 18.0.11
@@ -89,6 +91,7 @@ dependencies:
   '@as-integrations/koa': 0.2.1_g7mswurbupr7ivx7jgbyjqm5pu
   '@emotion/css': 11.10.5_@babel+core@7.20.5
   '@koa/router': 12.0.0
+  '@loadable/component': 5.15.3_react@18.2.0
   '@preact/preset-vite': 2.5.0_n2ofmzr4vobjsryzewtzqms2wa
   '@types/koa-session': 5.10.6
   '@types/react': 18.0.28
@@ -136,6 +139,7 @@ devDependencies:
   '@types/koa-route': 3.2.5
   '@types/koa-send': 4.1.3
   '@types/koa-static': 4.0.2
+  '@types/loadable__component': 5.13.4
   '@types/node': 18.11.15
   '@types/react-helmet': 6.1.6
   '@types/throttle-debounce': 5.0.0
@@ -1256,6 +1260,18 @@ packages:
       path-to-regexp: 6.2.1
     dev: false
 
+  /@loadable/component/5.15.3_react@18.2.0:
+    resolution: {integrity: sha512-VOgYgCABn6+/7aGIpg7m0Ruj34tGetaJzt4bQ345FwEovDQZ+dua+NWLmuJKv8rWZyxOUSfoJkmGnzyDXH2BAQ==}
+    engines: {node: '>=8'}
+    peerDependencies:
+      react: ^16.3.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      '@babel/runtime': 7.20.6
+      hoist-non-react-statics: 3.3.2
+      react: 18.2.0
+      react-is: 16.13.1
+    dev: false
+
   /@mapbox/node-pre-gyp/1.0.10:
     resolution: {integrity: sha512-4ySo4CjzStuprMwk35H5pPbkymjv1SF3jGLj6rAHp/xT/RF7TL7bd9CTm1xDY49K2qF7jmR/g7k+SkLETP6opA==}
     hasBin: true
@@ -1697,6 +1713,12 @@ packages:
       '@types/keygrip': 1.0.2
       '@types/koa-compose': 3.2.5
       '@types/node': 18.11.15
+
+  /@types/loadable__component/5.13.4:
+    resolution: {integrity: sha512-YhoCCxyuvP2XeZNbHbi8Wb9EMaUJuA2VGHxJffcQYrJKIKSkymJrhbzsf9y4zpTmr5pExAAEh5hbF628PAZ8Dg==}
+    dependencies:
+      '@types/react': 18.0.28
+    dev: true
 
   /@types/long/4.0.2:
     resolution: {integrity: sha512-MqTGEo5bj5t157U6fA/BiDynNkn0YknVdh48CMPkTSpFTVmvao5UQmm7uEF6xBEo7qIMAlY/JSleYaE6VOdpaA==}
