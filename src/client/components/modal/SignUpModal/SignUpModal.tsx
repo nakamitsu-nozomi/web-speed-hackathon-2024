@@ -1,10 +1,10 @@
 import type { FormikErrors } from 'formik';
 import { useFormik } from 'formik';
 import type { FC } from 'react';
-import { useState } from 'react';
+import { useCallback, useContext, useState } from 'react';
 
+import { ModalContext } from '../../../hooks/useModalProvider';
 import { useSignUp } from '../../../hooks/useSignUp';
-import { useCloseModal, useIsOpenModal, useOpenModal } from '../../../store/modal';
 import { Modal } from '../../foundation/Modal';
 import { PrimaryButton } from '../../foundation/PrimaryButton';
 import { TextInput } from '../../foundation/TextInput';
@@ -18,12 +18,9 @@ export type SignUpForm = {
 };
 
 export const SignUpModal: FC = () => {
-  const isOpened = useIsOpenModal('SIGN_UP');
   const { signUp } = useSignUp();
 
-  const handleOpenModal = useOpenModal();
-  const handleCloseModal = useCloseModal();
-
+  const { isSignUpModalOpen, setIsLoginModalOpen, setIsSignUpModalOpen } = useContext(ModalContext);
   const [submitError, setSubmitError] = useState<Error | null>(null);
   const formik = useFormik<SignUpForm>({
     initialValues: {
@@ -42,7 +39,7 @@ export const SignUpModal: FC = () => {
         });
         resetForm();
         setSubmitError(null);
-        handleCloseModal();
+        setIsSignUpModalOpen(false);
       } catch (err) {
         setSubmitError(err as Error);
       }
@@ -62,15 +59,24 @@ export const SignUpModal: FC = () => {
     validateOnChange: true,
   });
 
+  const onHide = useCallback(() => {
+    setIsSignUpModalOpen(false);
+  }, [setIsSignUpModalOpen]);
+
+  const onSignInClick = useCallback(() => {
+    setIsSignUpModalOpen(false);
+    setIsLoginModalOpen(true);
+  }, [setIsLoginModalOpen, setIsSignUpModalOpen]);
+
   return (
-    <Modal onHide={handleCloseModal} show={isOpened}>
+    <Modal onHide={onHide} show={isSignUpModalOpen}>
       <div className={styles.inner()}>
         <header className={styles.header()}>
           <h2 className={styles.heading()}>会員登録</h2>
           <button
             className={styles.switchToSignInButton()}
             data-testid="modal-switch-to-signin"
-            onClick={() => handleOpenModal('SIGN_IN')}
+            onClick={onSignInClick}
           >
             ログイン
           </button>
