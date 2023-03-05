@@ -1,5 +1,7 @@
 import { css } from '@emotion/css';
 
+import { Media } from '../../../utils/media';
+
 export const container = () => css`
   opacity: 1;
   position: relative;
@@ -46,25 +48,19 @@ export const title = () => css`
   color: #ffffff;
   font-weight: 700;
   letter-spacing: 1px;
-`;
-
-export const title__desktop = () => css`
-  font-size: 1.5rem;
-`;
-
-export const title__mobile = () => css`
   font-size: 1.125rem;
+
+  @media ${Media.PC} {
+    font-size: 1.5rem;
+  }
 `;
 
 export const description = () => css`
   color: #ffffff;
   margin-top: 8px;
-`;
-
-export const description__desktop = () => css`
-  font-size: 1rem;
-`;
-
-export const description__mobile = () => css`
   font-size: 0.875rem;
+
+  @media ${Media.PC} {
+    font-size: 1rem;
+  }
 `;

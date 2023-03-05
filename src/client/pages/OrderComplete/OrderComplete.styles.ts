@@ -1,5 +1,7 @@
 import { css } from '@emotion/css';
 
+import { Media } from '../../utils/media';
+
 export const container = () => css`
   display: grid;
   gap: 8px;
@@ -28,14 +30,10 @@ export const noticeDescriptionWrapper = () => css`
 export const noticeDescription = () => css`
   font-family: 'Noto Serif JP', sans-serif;
   text-align: center;
-`;
-
-export const noticeDescription__desktop = () => css`
-  font-size: 1.125rem;
-`;
-
-export const noticeDescription__mobile = () => css`
   font-size: 1rem;
+  @media ${Media.PC} {
+    font-size: 1.125rem;
+  }
 `;
 
 export const recommended = () => css`

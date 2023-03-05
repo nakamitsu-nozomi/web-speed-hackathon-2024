@@ -1,17 +1,16 @@
 import { css } from '@emotion/css';
 
+import { Media } from '../../../utils/media';
+
 export const container = () => css`
   display: flex;
-`;
-
-export const container__mobile = () => css`
   flex-direction: column;
   gap: 4px;
-`;
 
-export const container__desktop = () => css`
-  flex-direction: row;
-  gap: 8px;
+  @media ${Media.PC} {
+    flex-direction: row;
+    gap: 8px;
+  }
 `;
 
 export const item = () => css`
@@ -37,14 +36,11 @@ export const thumbnail = () => css`
   border-radius: 8px;
   overflow: hidden;
   position: relative;
-`;
-
-export const thumbnail__mobile = () => css`
   width: 50%;
-`;
 
-export const thumbnail__desktop = () => css`
-  width: 256px;
+  @media ${Media.PC} {
+    width: 256px;
+  }
 `;
 
 export const offerLabel = () => css`
@@ -79,23 +75,35 @@ export const itemPrice = () => css`
 export const controller = () => css`
   align-items: center;
   display: flex;
-  gap: 16px;
   padding: 4px 8px;
-`;
-
-export const controller__desktop = () => css`
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  justify-content: flex-start;
-`;
-
-export const controller__mobile = () => css`
-  display: flex;
   flex-direction: row;
   gap: 4px;
   justify-content: flex-end;
+  @media ${Media.PC} {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    & button {
+      width: 100%;
+    }
+  }
 `;
+
+// export const controller__desktop = () => css`
+//   display: flex;
+//   flex-direction: column;
+//   gap: 4px;
+//   justify-content: flex-start;
+// `;
+//
+// export const controller__mobile = () => css`
+//   display: flex;
+//   flex-direction: row;
+//   gap: 4px;
+//   justify-content: flex-end;
+// `;
 
 export const counter = () => css`
   align-items: center;
