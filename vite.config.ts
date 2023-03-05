@@ -2,7 +2,7 @@ import path from 'node:path';
 
 import preact from '@preact/preset-vite';
 import { visualizer } from 'rollup-plugin-visualizer';
-import { defineConfig } from 'vite';
+import { defineConfig, splitVendorChunkPlugin } from 'vite';
 import { ViteEjsPlugin } from 'vite-plugin-ejs';
 import topLevelAwait from 'vite-plugin-top-level-await';
 import wasm from 'vite-plugin-wasm';
@@ -32,7 +32,7 @@ export default defineConfig(async ({ mode }) => {
         output: {
           experimentalMinChunkSize: 40960,
         },
-        // plugins: [visualizer()],
+        // plugins: [visualizer(), splitVendorChunkPlugin()],
         plugins: [
           mode === 'analyze' &&
             visualizer({
@@ -41,6 +41,7 @@ export default defineConfig(async ({ mode }) => {
               gzipSize: true,
               open: true,
             }),
+          splitVendorChunkPlugin(),
         ],
       },
       target: 'chrome110',
