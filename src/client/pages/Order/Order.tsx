@@ -18,7 +18,7 @@ export const Order: FC = () => {
   const { authUser, authUserLoading, isAuthUser } = useAuthUser();
   const { updateCartItem } = useUpdateCartItem();
   const { submitOrder } = useSubmitOrder();
-  const { order } = useOrder();
+  const { order } = useOrder(authUser);
 
   if (authUserLoading) {
     return null;
