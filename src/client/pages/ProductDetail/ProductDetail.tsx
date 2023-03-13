@@ -26,10 +26,10 @@ export const ProductDetail: FC = () => {
 
   const { product } = useProduct(Number(productId));
   const { reviews } = useReviews(product?.id);
-  const { isAuthUser } = useAuthUser();
+  const { authUser, isAuthUser } = useAuthUser();
   const { sendReview } = useSendReview();
   const { updateCartItem } = useUpdateCartItem();
-  const { amountInCart } = useAmountInCart(Number(productId));
+  const { amountInCart } = useAmountInCart(Number(productId), authUser);
   const { activeOffer } = useActiveOffer(product);
   const { setIsLoginModalOpen } = useContext(ModalContext);
 
@@ -56,7 +56,7 @@ export const ProductDetail: FC = () => {
     <>
       {product && (
         <Helmet>
-          <title>{product.name}</title>
+          <title> {product.name}</title>
         </Helmet>
       )}
       <Layout>
