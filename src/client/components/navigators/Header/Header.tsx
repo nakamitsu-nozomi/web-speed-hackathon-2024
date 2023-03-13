@@ -4,8 +4,8 @@ import { FaShoppingCart, FaUser } from 'react-icons/fa';
 
 import { useAuthUser } from '../../../hooks/useAuthUser';
 import { ModalContext } from '../../../hooks/useModalProvider';
-import { Anchor } from '../../foundation/Anchor';
 import { Icon } from '../../foundation/Icon';
+import { Link } from '../../foundation/Link';
 
 import * as styles from './Header.styles';
 
@@ -19,7 +19,7 @@ export const Header: FC = () => {
 
   return (
     <header className={styles.container()}>
-      <Anchor href="/">
+      <Link to="/">
         <div className={styles.logo()}>
           <svg fill="none" height="32" width="205" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -28,15 +28,15 @@ export const Header: FC = () => {
             />
           </svg>
         </div>
-      </Anchor>
+      </Link>
       {isAuthUser ? (
-        <Anchor data-testid="navigate-order" href={'/order'}>
+        <Link data-testid="navigate-order" to={'/order'}>
           <div className={styles.orderLink()}>
             <Icon color="#222222" height={20} width={20}>
               <FaShoppingCart></FaShoppingCart>
             </Icon>
           </div>
-        </Anchor>
+        </Link>
       ) : (
         <button className={styles.signInButton()} data-testid="navigate-signin" onClick={onSinInClick}>
           <Icon color="#222222" height={20} width={20}>

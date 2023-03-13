@@ -3,8 +3,8 @@ import type { FC } from 'react';
 import { memo } from 'react';
 
 import type { ProductFragmentResponse } from '../../../graphql/fragments';
-import { Anchor } from '../../foundation/Anchor';
 import { AspectRatio } from '../../foundation/AspectRatio';
+import { Link } from '../../foundation/Link';
 
 import * as styles from './ProductHeroImage.styles';
 
@@ -18,7 +18,7 @@ export const ProductHeroImage: FC<Props> = memo(({ lazy, product, title }) => {
   const thumbnailFile = product.media.find((productMedia) => productMedia.isThumbnail)?.file;
 
   return (
-    <Anchor href={`/product/${product.id}`}>
+    <Link to={`/product/${product.id}`}>
       <div className={styles.container()}>
         <AspectRatio ratioHeight={9} ratioWidth={16}>
           <img
@@ -34,7 +34,7 @@ export const ProductHeroImage: FC<Props> = memo(({ lazy, product, title }) => {
           <p className={classNames(styles.description())}>{product.name}</p>
         </div>
       </div>
-    </Anchor>
+    </Link>
   );
 });
 

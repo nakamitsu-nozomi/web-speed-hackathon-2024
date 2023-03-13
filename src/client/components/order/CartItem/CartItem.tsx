@@ -5,9 +5,9 @@ import { useCallback } from 'react';
 import type { ShoppingCartItemFragmentResponse } from '../../../graphql/fragments';
 import { useActiveOffer } from '../../../hooks/useActiveOffer';
 import { normalizeCartItemCount } from '../../../utils/normalize_cart_item';
-import { Anchor } from '../../foundation/Anchor';
 import { AspectRatio } from '../../foundation/AspectRatio';
 import { Image } from '../../foundation/Image';
+import { Link } from '../../foundation/Link';
 import { OutlineButton } from '../../foundation/OutlineButton';
 import { ProductOfferLabel } from '../../product/ProductOfferLabel';
 
@@ -35,7 +35,7 @@ export const CartItem: FC<Props> = ({ item, onRemove, onUpdate }) => {
   return (
     <div className={classNames(styles.container())}>
       <div className={styles.item()}>
-        <Anchor href={`/product/${item.product.id}`}>
+        <Link to={`/product/${item.product.id}`}>
           <div className={styles.itemInner()}>
             {thumbnailFile ? (
               <div className={classNames(styles.thumbnail())}>
@@ -54,7 +54,7 @@ export const CartItem: FC<Props> = ({ item, onRemove, onUpdate }) => {
               <p className={styles.itemPrice()}>{`¥${price.toLocaleString()}`}</p>
             </div>
           </div>
-        </Anchor>
+        </Link>
       </div>
       <div className={classNames(styles.controller())}>
         <label className={styles.counter()}>
