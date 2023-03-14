@@ -34,6 +34,14 @@ export const Top: FC = () => {
         return Math.max(Math.floor(containerWidth / ITEM_MIN_WIDTH), 1);
       });
     });
+    return () =>
+      window.removeEventListener('resize', () => {
+        setIsLargeWindow(window.innerWidth > breakPont);
+        setVisibleItemCount(() => {
+          const containerWidth = containerElementRef.current?.getBoundingClientRect().width ?? 0;
+          return Math.max(Math.floor(containerWidth / ITEM_MIN_WIDTH), 1);
+        });
+      });
   }, []);
   if (recommendation === undefined || features === undefined) {
     return null;
