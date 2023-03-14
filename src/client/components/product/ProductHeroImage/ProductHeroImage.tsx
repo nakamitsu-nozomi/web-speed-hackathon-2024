@@ -25,7 +25,7 @@ export const ProductHeroImage: FC<Props> = memo(({ lazy, product, title }) => {
             alt={product.name}
             className={styles.image()}
             loading={lazy ? 'lazy' : 'eager'}
-            src={thumbnailFile?.filename}
+            src={thumbnailFile?.filename.replace('jpg', 'webp')}
           />
         </AspectRatio>
 
